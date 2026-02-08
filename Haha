@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Trap 💘</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(135deg, #ff4d6d, #ffb3c6);
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        font-size: 24px;
+        animation: float 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(100vh); }
+        100% { transform: translateY(-10vh); }
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        top: 20%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 8px black;
+    }
+
+    .buttons {
+        margin-top: 40px;
+    }
+
+    button {
+        font-size: 22px;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 12px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #00ff88;
+        font-weight: bold;
+    }
+
+    #no {
+        background: #ff3333;
+        font-weight: bold;
+        position: absolute;
+    }
+
+    #result {
+        display: none;
+        margin-top: 30px;
+    }
+
+    #result h2 {
+        font-size: 34px;
+        font-weight: bold;
+        color: yellow;
+        text-shadow: 3px 3px 10px black;
+    }
+
+    .graffiti {
+        position: absolute;
+        font-size: 30px;
+        opacity: 0.8;
+        animation: graffitiMove 4s infinite alternate;
+    }
+
+    @keyframes graffitiMove {
+        from { transform: rotate(-10deg); }
+        to { transform: rotate(10deg); }
+    }
+
+</style>
+</head>
+<body>
+
+<!-- Floating Hearts -->
+<script>
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        document.body.appendChild(heart);
+    }
+</script>
+
+<div class="container" id="main">
+    <h1>SHREYA, DO U LOVE ME? 💘</h1>
+
+    <div class="buttons">
+        <button id="yes">YES 💖</button>
+        <button id="no">NO 💔</button>
+    </div>
+</div>
+
+<div class="container" id="result">
+    <h2>I KNEW YOU LOVE ME 💃🕺</h2>
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" 
+         width="250" alt="Dancing">
+</div>
+
+<script>
+    const noBtn = document.getElementById("no");
+
+    function moveNo() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    document.getElementById("yes").onclick = () => {
+        document.getElementById("main").style.display = "none";
+        document.getElementById("result").style.display = "block";
+
+        // Graffiti everywhere
+        for (let i = 0; i < 15; i++) {
+            let g = document.createElement("div");
+            g.className = "graffiti";
+            g.innerHTML = "💥 LOVE 💥";
+            g.style.left = Math.random() * 100 + "vw";
+            g.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(g);
+        }
+    };
+</script>
+
+</body>
+</html>
